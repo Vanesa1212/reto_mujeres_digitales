@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Pacientes</title>
+</head>
+<body>
+    <h1>Lista de Pacientes</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Tipo de Identificación</th>
+                <th>Número de Identificación</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Sexo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for paciente in pacientes %}
+            <tr>
+                <td>{{ paciente.get_tipo_id_display }}</td>
+                <td>{{ paciente.numero_identificacion }}</td>
+                <td>{{ paciente.fecha_nacimiento }}</td>
+                <td>{{ paciente.get_sexo_display }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No hay pacientes registrados.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Enlaces de paginación -->
+    <div class="pagination">
+        <span class="step-links">
+            {% if pacientes.has_previous %}
+                <a href="?page=1">&laquo; primera</a>
+                <a href="?page={{ pacientes.previous_page_number }}">anterior</a>
+            {% endif %}
+
+            <span class="current">
+                Página {{ pacientes.number }} de {{ pacientes.paginator.num_pages }}.
+            </span>
+
+            {% if pacientes.has_next %}
+                <a href="?page={{ pacientes.next_page_number }}">siguiente</a>
+                <a href="?page={{ pacientes.paginator.num_pages }}">última &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</body>
+</html>
