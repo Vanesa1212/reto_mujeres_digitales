@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'resultados',
     'pacientes',
 ]
 
@@ -80,7 +79,7 @@ WSGI_APPLICATION = 'salud.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'vida_y_salud',
+        'NAME': 'vida_salud',
         'USER': 'root',
         'PASSWORD': 'root',
         'HOST': 'localhost',

@@ -1,0 +1,37 @@
+<!-- pacientes/listar.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Pacientes</title>
+</head>
+<body>
+    <h1>Listado de Pacientes</h1>
+    <ul>
+        {% for user in custom_users %}
+            <li>{{ user.nombres }} {{ user.apellidos }}</li>
+        {% empty %}
+            <li>No hay pacientes registrados.</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Paginación -->
+    <div>
+        <span class="step-links">
+            {% if custom_users.has_previous %}
+                <a href="?page=1">&laquo; primera</a>
+                <a href="?page={{ custom_users.previous_page_number }}">anterior</a>
+            {% endif %}
+
+            <span class="current">
+                Página {{ custom_users.number }} de {{ custom_users.paginator.num_pages }}.
+            </span>
+
+            {% if custom_users.has_next %}
+                <a href="?page={{ custom_users.next_page_number }}">siguiente</a>
+                <a href="?page={{ custom_users.paginator.num_pages }}">última &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</body>
+</html>

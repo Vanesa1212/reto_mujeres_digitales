@@ -1,7 +1,7 @@
 from django import forms
-from .models import Usuario
+from .models import CustomUser, CustomUserManager
 
-class UsuarioForm(forms.ModelForm):
+class CustomUserForm(forms.ModelForm):
     class Meta:
-        model = Usuario
+        model = CustomUser
         fields = ['tipo_id', 'numero_identificacion', 'Nombres', 'Apellidos']
